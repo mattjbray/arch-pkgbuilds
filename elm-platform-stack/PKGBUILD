@@ -1,0 +1,45 @@
+# Maintainer: Matt Bray <mattjbray@gmail.com>
+pkgname=elm-platform-stack
+pkgver=0.17.1
+pkgrel=1
+pkgdesc="Bundle of all core development tools for the Elm language."
+arch=('i686' 'x86_64')
+url="http://elm-lang.org"
+license=('BSD3')
+depends=('ncurses' 'gmp' 'libffi' 'zlib')
+makedepends=('stack')
+conflicts=('nodejs-elm' 'elm-platform')
+source=('stack.yaml')
+sha256sums=('3c509573a4cc0a4234fa5c7e4e7b829dfcf84f051c23cbe87aff17113be7174d')
+
+build() {
+  cd "$srcdir"
+
+  # stack.yaml is where the magic happens. Bump the commit SHAs in that file
+  # when a new release comes along.
+
+  # Ensure the correct GHC version is installed.
+  stack setup
+
+  # Install in two steps: elm-reactor requires elm-make.
+  stack install --local-bin-path . elm-compiler elm-package elm-make elm-repl
+  stack install --local-bin-path . elm-reactor
+}
+
+package() {
+  cd "$srcdir"
+  binpath="."
+
+  install -Dm755 "$binpath/elm"         "$pkgdir/usr/bin/elm"
+  install -Dm755 "$binpath/elm-make"    "$pkgdir/usr/bin/elm-make"
+  install -Dm755 "$binpath/elm-package" "$pkgdir/usr/bin/elm-package"
+  install -Dm755 "$binpath/elm-reactor" "$pkgdir/usr/bin/elm-reactor"
+  install -Dm755 "$binpath/elm-repl"    "$pkgdir/usr/bin/elm-repl"
+
+  # Stack downloads the repos to folders with dynamically generated names.
+  # Choose a license from one of the repos (they should all be the same).
+  license_file=$(find .stack-work/downloaded -name LICENSE | grep -v elm-stuff | head -n1)
+  install -Dm644 "$license_file" "$pkgdir/usr/share/licenses/elm-platform/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:
