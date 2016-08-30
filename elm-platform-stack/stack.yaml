@@ -41,16 +41,16 @@ packages:
     commit: e44deafaf9cbf3749484070f267f03a368711adb # 0.17.1
 - location:
     git: https://github.com/elm-lang/elm-package
-    commit: 6ccc78efec303fff36c62f83bdd29dc1d19e3ed1 # 0.17.1
+    commit: 9011ccdbced1d06aa60de0e3096e609ef44d26dd # 0.17.1
 - location:
     git: https://github.com/elm-lang/elm-make
     commit: 0a0a1f52ab04e2d68d60a5798722e1de30b47335 # 0.17.1
 - location:
     git: https://github.com/elm-lang/elm-reactor
-    commit: fcab094c30469cb04b037bf970805a69f8c1bee5 # 0.17.1
+    commit: 7522d7ef379c5a4ffbba11b1be09ed04add08a63 # 0.17.1
 - location:
     git: https://github.com/elm-lang/elm-repl
-    commit: 8d1040d3eefc4f19c669b745c3050ee7b6ae0aac # 0.17.1
+    commit: 413ac0d4ee43c8542afd3041bbb7b8c903cd3d30 # 0.17.1
 
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
