@@ -10,7 +10,7 @@ depends=('ncurses' 'gmp' 'libffi' 'zlib')
 makedepends=('stack')
 conflicts=('nodejs-elm' 'elm-platform')
 source=('stack.yaml')
-sha256sums=('3c509573a4cc0a4234fa5c7e4e7b829dfcf84f051c23cbe87aff17113be7174d')
+sha256sums=('473608c0e9c9bdeff293a788db581490c5048fe70dcf3c2a7f2f64f863898c24')
 
 build() {
   cd "$srcdir"
